@@ -68,11 +68,11 @@ def upload(file, url, key, keyid, bucket):
     try:
         with open(file, "rb") as upload_file:
             filehash = hashlib.sha256(upload_file.read()).hexdigest()
-            s_3.Bucket(bucket).upload_file(file, filehash, Config=S3_CFG)
+            s_3.Bucket(bucket).upload_file(file, f'{filehash}-{file}', Config=S3_CFG)
     except Exception as err:
         return err
     else:
-        return f'Uploaded file url: {url}/{bucket}/{filehash}'
+        return f'Uploaded file url: {url}/{bucket}/{filehash}-{file}'
 
 
 def create_config(url, key, keyid, bucket):
