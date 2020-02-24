@@ -107,7 +107,8 @@ def main():
     n_s = parser.parse_args(sys.argv[1:])
     if n_s.create_config:
         print(create_config(n_s.url, n_s.key, n_s.keyid, n_s.bucket))
-    print(upload(n_s.file, n_s.url, n_s.key, n_s.keyid, n_s.bucket))
+    if n_s.file:
+        print(upload(n_s.file, n_s.url, n_s.key, n_s.keyid, n_s.bucket))
 
 
 if __name__ == '__main__':
