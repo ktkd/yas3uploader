@@ -4,7 +4,7 @@
 """
 Upload file to S3
 """
-import hashlib
+import uuid
 import argparse
 import sys
 import json
@@ -67,7 +67,7 @@ def upload(file, url, key, keyid, bucket):
                          region_name="auto")
     try:
         with open(file, "rb") as upload_file:
-            filehash = hashlib.sha256(upload_file.read()).hexdigest()
+            filehash = uuid.uuid4().hex
             s_3.Bucket(bucket).upload_file(file, f'{filehash}-{file}', Config=S3_CFG)
     except Exception as err:
         return err
