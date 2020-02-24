@@ -66,7 +66,7 @@ def upload(file, url, key, keyid, bucket):
                          aws_access_key_id=keyid,
                          region_name="auto")
     try:
-        outfile = os.path.split(file)
+        _, outfile = os.path.split(file)
         outfile_hash = uuid.uuid4().hex
         s_3.Bucket(bucket).upload_file(file, f'{outfile_hash}-{outfile}', Config=S3_CFG)
     except Exception as err:
