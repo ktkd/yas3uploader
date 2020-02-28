@@ -37,7 +37,7 @@ def create_parser():
         key = data['key']
         keyid = data['keyid']
     except Exception as err:
-        print(f'Problem with config file  {err}')
+        print(f'Problem {err} with config file')
         parser.add_argument('-u', '--url', type=str, required=1)
         parser.add_argument('-k', '--key', type=str, required=1)
         parser.add_argument('-i', '--keyid', type=str, required=1)
